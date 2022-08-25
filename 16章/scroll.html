@@ -20,11 +20,27 @@
   <script>
     // ドキュメントの自動生成
     const dummyContent = document.querySelector('.dummy');
-    for(let i = 0; i < 1000; i++ ){
+    for(let i = 0; i < 2000; i++ ){
       dummyContent.textContent += `テキスト　${i}`;
     }
     // スクロールイベントを使用して、非表示のボタンを表示させる
-
+    window.addEventListener('scroll', function(){
+      const button = document.querySelector('.moveToTop');
+      if (window.scrollY >= document.body.clientHeight / 2){
+        button.style.display = 'block';
+      }else{
+        button.style.display = 'none';
+      }
+    });
+    //ページ上に戻る
+    const button = document.querySelector('.moveToTop');
+    button.addEventListener('click', function(){
+      window.scrollTo({
+        top: 0,
+        left:0,
+        behavior: 'smooth'
+      });
+    });
   </script>
 </body>
 </html>
